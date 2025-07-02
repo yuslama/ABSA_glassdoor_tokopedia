@@ -106,7 +106,7 @@ Jalankan notebook `3_analisis_sentimen.ipynb` untuk melakukan analisis utama. No
       * **Filtering**: Menggunakan `spaCy` untuk menyaring *term* berdasarkan kelas kata (misalnya, hanya kata benda).
       * **Klasifikasi Semantik**: Menggunakan model `SentenceTransformer` untuk mengklasifikasikan setiap *term* ke aspek Herzberg dengan kemiripan semantik tertinggi.
 
-### 3\. `analisis_sentimen.ipynb` (Updated)
+### 3\. `analisis_sentimen.ipynb`
 
   * **Tujuan**: Menganalisis sentimen untuk setiap aspek, menghitung perubahan **Net-Score** antar periode, dan memvisualisasikannya dalam **Priority Grid** untuk rekomendasi strategis.
   * **Input Utama**: `tokopedia_reviews_date_cleaned.csv` dan `kamus_aspek_v5.csv`.
