@@ -93,57 +93,44 @@ Jalankan notebook `3_analisis_sentimen.ipynb` untuk melakukan analisis utama.
 
 -----
 
+Tentu, ini adalah bagian "Detail Skrip" yang ditulis ulang menggunakan format Markdown standar tanpa tag HTML `<details>` yang mungkin menyebabkan error.
+
+---
+
 ## 📜 Detail Skrip
 
-\<details\>
-\<summary\>\<strong\>1. \<code\>data\_pre-processing.ipynb\</code\>\</strong\>\</summary\>
-\<br\>
-\<ul\>
-\<li\>\<strong\>Tujuan\</strong\>: Membersihkan file CSV mentah dari data yang tidak relevan, duplikat, dan format yang tidak konsisten agar siap untuk dianalisis.\</li\>
-\<li\>\<strong\>Input Utama\</strong\>: \<code\>export\_1750496855742(tokped\_review).csv\</code\>\</li\>
-\<li\>\<strong\>Output Utama\</strong\>: \<code\>tokopedia\_reviews\_date\_cleaned.csv\</code\>\</li\>
-\<li\>\<strong\>Proses Kunci\</strong\>:
-\<ul\>
-\<li\>Seleksi kolom: \<code\>Review Date\</code\>, \<code\>Review Pros\</code\>, \<code\>Review Cons\</code\>, \<code\>Review Rating Overall\</code\>.\</li\>
-\<li\>Pembersihan teks dengan Regex untuk menghapus HTML, URL, dan karakter non-alfanumerik.\</li\>
-\<li\>Penghapusan duplikat berdasarkan konten ulasan dan tanggal.\</li\>
-\<li\>Konversi dan standardisasi kolom tanggal ke format \<code\>DD-MM-YYYY\</code\>.\</li\>
-\</ul\>
-\</li\>
-\</ul\>
-\</details\>
+### 1. `1_data_pre-processing.ipynb`
 
-\<details\>
-\<summary\>\<strong\>2. \<code\>kamus\_aspek.ipynb\</code\>\</strong\>\</summary\>
-\<br\>
-\<ul\>
-\<li\>\<strong\>Tujuan\</strong\>: Membangun sebuah kamus yang memetakan kata-kata kunci dari ulasan ke dalam 13 aspek kepuasan kerja menurut teori Herzberg.\</li\>
-\<li\>\<strong\>Input Utama\</strong\>: File ulasan yang sudah bersih (e.g., \<code\>tokopedia\_reviews\_date\_cleaned.csv\</code\>).\</li\>
-\<li\>\<strong\>Output Utama\</strong\>: \<code\>kamus\_aspek\_v5.csv\</code\>\</li\>
-\<li\>\<strong\>Proses Kunci\</strong\>:
-\<ul\>
-\<li\>\<strong\>Ekstraksi\</strong\>: Menggunakan \<code\>TfidfVectorizer\</code\> untuk menemukan term (1-gram & 2-gram) yang paling signifikan.\</li\>
-\<li\>\<strong\>Filtering\</strong\>: Menggunakan \<code\>spaCy\</code\> untuk menyaring term, hanya mempertahankan yang merupakan kata benda (NOUN) untuk merepresentasikan aspek.\</li\>
-\<li\>\<strong\>Klasifikasi Semantik\</strong\>: Menggunakan model \<code\>SentenceTransformer\</code\> untuk mencari aspek Herzberg (misal: 'Compensation', 'Work Itself') yang deskripsinya paling mirip secara semantik dengan setiap term yang telah diekstraksi.\</li\>
-\</ul\>
-\</li\>
-\</ul\>
-\</details\>
+* **Tujuan**: Membersihkan file CSV mentah dari data yang tidak relevan, duplikat, dan format yang tidak konsisten agar siap untuk dianalisis.
+* **Input Utama**: `export_1750496855742(tokped_review).csv`.
+* **Output Utama**: `tokopedia_reviews_date_cleaned.csv`.
+* **Proses Kunci**:
+    * Seleksi kolom: `Review Date`, `Review Pros`, `Review Cons`, dan `Review Rating Overall`.
+    * Pembersihan teks dengan Regex untuk menghapus HTML, URL, dan karakter non-alfanumerik.
+    * Penghapusan duplikat berdasarkan konten ulasan dan tanggal.
+    * Konversi dan standardisasi kolom tanggal ke format `DD-MM-YYYY`.
 
-\<details\>
-\<summary\>\<strong\>3. \<code\>analisis\_sentimen.ipynb\</code\>\</strong\>\</summary\>
-\<br\>
-\<ul\>
-\<li\>\<strong\>Tujuan\</strong\>: Menganalisis sentimen untuk setiap aspek yang ditemukan dalam ulasan dan membandingkan hasilnya antara periode sebelum dan sesudah akuisisi.\</li\>
-\<li\>\<strong\>Input Utama\</strong\>: \<code\>tokopedia\_reviews\_date\_cleaned.csv\</code\> dan \<code\>kamus\_aspek\_v5.csv\</code\>.\</li\>
-\<li\>\<strong\>Output Utama\</strong\>: \<code\>hasil\_absa\_batch\_processing.csv\</code\>, \<code\>reviews\_tokopedia.csv\</code\>, dan berbagai file statistik serta visualisasi (\<code\>.png\</code\>, \<code\>.csv\</code\>).\</li\>
-\<li\>\<strong\>Proses Kunci\</strong\>:
-\<ul\>
-\<li\>\<strong\>Analisis Sentimen (ABSA)\</strong\>: Menggunakan pipeline \<em\>text-classification\</em\> dari \<code\>transformers\</code\> dengan model \<code\>yangheng/deberta-v3-base-absa-v1.1\</code\>. Inputnya berupa pasangan "[Kalimat] [SEP] [Aspek]". Proses ini dijalankan secara batch di GPU untuk efisiensi.\</li\>
-\<li\>\<strong\>Analisis Temporal\</strong\>: Membagi data menjadi dua periode ("pre" dan "post") berdasarkan tanggal akuisisi (15 Mei 2024).\</li\>
-\<li\>\<strong\>Analisis Statistik\</strong\>: Menghitung proporsi sentimen positif untuk setiap aspek di kedua periode, lalu melakukan \<em\>two-proportion z-test\</em\> untuk memeriksa apakah perubahannya signifikan.\</li\>
-\<li\>\<strong\>Visualisasi\</strong\>: Membuat grafik untuk memudahkan interpretasi hasil, seperti perubahan absolut sentimen (Δ Net-Score) dan *Priority Grid* yang memetakan perubahan terhadap kategori Herzberg (Motivator vs. Hygiene).\</li\>
-\</ul\>
-\</li\>
-\</ul\>
-\</details\>
+---
+
+### 2. `2_kamus_aspek.ipynb`
+
+* **Tujuan**: Membangun sebuah kamus yang memetakan kata-kata kunci dari ulasan ke dalam 13 aspek kepuasan kerja menurut teori Herzberg.
+* **Input Utama**: File ulasan yang sudah bersih (contohnya `shopee_cleaned_reviews.csv`).
+* **Output Utama**: `hasil_klasifikasi_dengan_deskripsi_aspek.csv` (dalam alur kerja utama menjadi `kamus_aspek_v5.csv`).
+* **Proses Kunci**:
+    * **Ekstraksi**: Menggunakan `TfidfVectorizer` untuk menemukan *term* (1-gram & 2-gram) yang paling signifikan.
+    * **Filtering**: Menggunakan `spaCy` untuk menyaring *term*, hanya mempertahankan yang merupakan kata benda (NOUN) untuk merepresentasikan aspek.
+    * **Klasifikasi Semantik**: Menggunakan model `SentenceTransformer` untuk mencari aspek Herzberg (misal: 'Compensation', 'Work Itself') yang deskripsinya paling mirip secara semantik dengan setiap *term* yang telah diekstraksi.
+
+---
+
+### 3. `3_analisis_sentimen.ipynb`
+
+* **Tujuan**: Menganalisis sentimen untuk setiap aspek yang ditemukan dalam ulasan dan membandingkan hasilnya antara periode sebelum dan sesudah tanggal akuisisi (15 Mei 2024).
+* **Input Utama**: `tokopedia_reviews_date_cleaned.csv` dan `kamus_aspek_v5.csv`.
+* **Output Utama**: `hasil_absa_batch_processing.csv`, `reviews_tokopedia.csv`, serta berbagai file statistik dan visualisasi (`.png`, `.csv`).
+* **Proses Kunci**:
+    * **Analisis Sentimen (ABSA)**: Menggunakan *pipeline* `text-classification` dari pustaka `transformers` dengan model `yangheng/deberta-v3-base-absa-v1.1`. Inputnya berupa pasangan "[Kalimat] [SEP] [Aspek]". Proses ini dijalankan secara *batch* di GPU untuk efisiensi.
+    * **Analisis Temporal**: Membagi data menjadi dua periode ("pre" dan "post") berdasarkan tanggal akuisisi.
+    * **Analisis Statistik**: Menghitung proporsi sentimen positif untuk setiap aspek di kedua periode, lalu melakukan *two-proportion z-test* untuk memeriksa apakah perubahannya signifikan.
+    * **Visualisasi**: Membuat grafik untuk memudahkan interpretasi hasil, seperti perubahan sentimen (digambarkan dalam `delta_bar.png`) dan *Priority Grid* (`priority_grid.png`) yang memetakan perubahan terhadap kategori Herzberg.
