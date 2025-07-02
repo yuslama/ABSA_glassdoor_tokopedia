@@ -99,7 +99,7 @@ Tentu, ini adalah bagian "Detail Skrip" yang ditulis ulang menggunakan format Ma
 
 ## 📜 Detail Skrip
 
-### 1. `1_data_pre-processing.ipynb`
+### 1. `data_pre-processing.ipynb`
 
 * **Tujuan**: Membersihkan file CSV mentah dari data yang tidak relevan, duplikat, dan format yang tidak konsisten agar siap untuk dianalisis.
 * **Input Utama**: `export_1750496855742(tokped_review).csv`.
@@ -112,7 +112,7 @@ Tentu, ini adalah bagian "Detail Skrip" yang ditulis ulang menggunakan format Ma
 
 ---
 
-### 2. `2_kamus_aspek.ipynb`
+### 2. `kamus_aspek.ipynb`
 
 * **Tujuan**: Membangun sebuah kamus yang memetakan kata-kata kunci dari ulasan ke dalam 13 aspek kepuasan kerja menurut teori Herzberg.
 * **Input Utama**: File ulasan yang sudah bersih (contohnya `shopee_cleaned_reviews.csv`).
@@ -124,7 +124,7 @@ Tentu, ini adalah bagian "Detail Skrip" yang ditulis ulang menggunakan format Ma
 
 ---
 
-### 3. `3_analisis_sentimen.ipynb`
+### 3. `analisis_sentimen.ipynb`
 
 * **Tujuan**: Menganalisis sentimen untuk setiap aspek yang ditemukan dalam ulasan dan membandingkan hasilnya antara periode sebelum dan sesudah tanggal akuisisi (15 Mei 2024).
 * **Input Utama**: `tokopedia_reviews_date_cleaned.csv` dan `kamus_aspek_v5.csv`.
