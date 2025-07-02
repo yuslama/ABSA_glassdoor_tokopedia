@@ -36,7 +36,7 @@ Metodologi utama dalam analisis ini adalah perhitungan **Net-Score** (proporsi s
 │   ├── delta_bar.png                      # Grafik batang perubahan Net-Score
 │   └── priority_grid.png                  # Grafik Priority Grid
 │
-└── README.md                              # Anda sedang membaca ini
+└── README.md                              # sedang dibaca
 ```
 
 ## ⚙️ Instalasi
