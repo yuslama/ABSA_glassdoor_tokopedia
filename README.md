@@ -1,6 +1,6 @@
 # Analisis Sentimen Berbasis Aspek (ABSA) pada Ulasan Karyawan Tokopedia
 
-Proyek ini bertujuan untuk melakukan Analisis Sentimen Berbasis Aspek (ABSA) terhadap ulasan karyawan Tokopedia. Analisis ini dirancang untuk mengidentifikasi aspek-aspek kunci terkait kepuasan kerja berdasarkan teori Herzberg, mengukur sentimen terhadap aspek-aspek tersebut, dan menganalisis perubahannya sebelum dan sesudah periode akuisisi pada 15 Mei 2024.
+Project ini bertujuan untuk melakukan Analisis Sentimen Berbasis Aspek (ABSA) terhadap ulasan karyawan Tokopedia. Analisis ini dirancang untuk mengidentifikasi aspek-aspek kunci terkait kepuasan kerja berdasarkan teori Herzberg, mengukur sentimen terhadap aspek-aspek tersebut, dan menganalisis perubahannya sebelum dan sesudah periode akuisisi pada 15 Mei 2024.
 
 ## 🚀 Fitur Utama
 
@@ -32,30 +32,16 @@ Proyek ini bertujuan untuk melakukan Analisis Sentimen Berbasis Aspek (ABSA) ter
 │   ├── delta_bar.png                      # Grafik batang perubahan sentimen
 │   └── priority_grid.png                  # Grafik Priority Grid
 │
-└── README.md                              # Anda sedang membaca ini
-```
-
-## ⚙️ Instalasi
-
-Pastikan Anda memiliki Python 3.8+ terinstal. Kemudian, instal semua pustaka yang dibutuhkan dengan menjalankan perintah berikut:
-
-```bash
-pip install pandas scikit-learn spacy "sentence-transformers>=2.2.0" torch transformers nltk matplotlib scipy
-```
-
-Selanjutnya, unduh model bahasa Inggris untuk spaCy:
-
-```bash
-python -m spacy download en_core_web_sm
+└── README.md                              # Panduan
 ```
 
 ## 💡 Alur Kerja & Cara Menjalankan
 
-Proyek ini terdiri dari tiga notebook utama yang harus dijalankan secara berurutan.
+Project ini terdiri dari tiga notebook utama yang harus dijalankan secara berurutan.
 
 ### Langkah 1: Pra-pemrosesan Data
 
-Jalankan notebook `1_data_pre-processing.ipynb` untuk membersihkan data mentah.
+Jalankan notebook `data_pre-processing.ipynb` untuk membersihkan data mentah.
 
   * **Input**: `data_mentah/export_1750496855742(tokped_review).csv`
   * **Proses**:
@@ -68,7 +54,7 @@ Jalankan notebook `1_data_pre-processing.ipynb` untuk membersihkan data mentah.
 
 ### Langkah 2: Pembuatan Kamus Aspek
 
-Jalankan notebook `2_kamus_aspek.ipynb` untuk menghasilkan daftar kata kunci yang telah diklasifikasikan ke dalam aspek Herzberg.
+Jalankan notebook `kamus_aspek.ipynb` untuk menghasilkan daftar kata kunci yang telah diklasifikasikan ke dalam aspek Herzberg.
 
   * **Input**: `hasil_analisis/tokopedia_reviews_date_cleaned.csv` (atau file ulasan bersih lainnya).
   * **Proses**:
@@ -80,7 +66,7 @@ Jalankan notebook `2_kamus_aspek.ipynb` untuk menghasilkan daftar kata kunci yan
 
 ### Langkah 3: Analisis Sentimen & Interpretasi Hasil
 
-Jalankan notebook `3_analisis_sentimen.ipynb` untuk melakukan analisis utama.
+Jalankan notebook `analisis_sentimen.ipynb` untuk melakukan analisis utama.
 
   * **Input**:
       * `hasil_analisis/tokopedia_reviews_date_cleaned.csv`
@@ -92,8 +78,6 @@ Jalankan notebook `3_analisis_sentimen.ipynb` untuk melakukan analisis utama.
   * **Output**: Seluruh file di dalam folder `hasil_analisis/`.
 
 -----
-
-Tentu, ini adalah bagian "Detail Skrip" yang ditulis ulang menggunakan format Markdown standar tanpa tag HTML `<details>` yang mungkin menyebabkan error.
 
 ---
 
