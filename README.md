@@ -1,7 +1,3 @@
-Tentu, ini adalah draf `README.md` yang lengkap dan detail, namun tetap terlihat sederhana dan bersih, berdasarkan ketiga file notebook yang Anda berikan.
-
------
-
 # Analisis Sentimen Berbasis Aspek (ABSA) pada Ulasan Karyawan Tokopedia
 
 Proyek ini bertujuan untuk melakukan Analisis Sentimen Berbasis Aspek (ABSA) terhadap ulasan karyawan Tokopedia. Analisis ini dirancang untuk mengidentifikasi aspek-aspek kunci terkait kepuasan kerja berdasarkan teori Herzberg, mengukur sentimen terhadap aspek-aspek tersebut, dan menganalisis perubahannya sebelum dan sesudah periode akuisisi pada 15 Mei 2024.
